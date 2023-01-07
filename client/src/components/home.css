@@ -4,9 +4,22 @@
   width: 50px !important;
   height: 50px !important;
   border-radius: 50% !important;
-  top: 50% !important;
+  top: 40% !important;
   bottom: 50% !important;
   margin: 0rem 1rem !important;
+}
+@media screen and (max-width: 768px) {
+  .carousel-control-next,
+  .carousel-control-prev {
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0rem 0.5rem !important;
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 1rem !important;
+    color: white !important;
+  }
 }
 .carousel-indicators .active {
   background-color: rgb(0, 0, 0, 0.8) !important;
@@ -16,4 +29,7 @@
   width: 50px !important;
   height: 10px !important;
   border-radius: 10px !important;
+}
+.carousel-caption {
+  top: 40%;
 }

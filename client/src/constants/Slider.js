@@ -27,7 +27,7 @@ export const carouselData = [
     spanText: "Explore More",
   },
   {
-    id: 1,
+    id: 4,
     img: "/img/slide4.jpg",
     text: "TrackSuits",
     paragraph:
@@ -36,7 +36,7 @@ export const carouselData = [
     spanText: "Explore More",
   },
   {
-    id: 1,
+    id: 5,
     img: "/img/slide5.jpg",
     text: "Hoodies",
     paragraph:

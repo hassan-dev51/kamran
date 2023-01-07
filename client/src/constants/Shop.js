@@ -4,11 +4,11 @@ const Shop = [
     name: "American Football",
     submenu: true,
     sublinks: [
-      { title: "T-shirt", link: "https://www.youtube.com/" },
-      { title: "Casual shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
+      { title: "T-shirt", link: "/american" },
+      { title: "Casual shirts", link: "/american" },
+      { title: "formal shirts", link: "/american" },
+      { title: "formal shirts", link: "/american" },
+      { title: "formal shirts", link: "/american" },
     ],
   },
   {
@@ -16,11 +16,11 @@ const Shop = [
     name: "Baseball",
     submenu: true,
     sublinks: [
-      { title: "T-shirt", link: "https://www.youtube.com/" },
-      { title: "Casual shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
+      { title: "T-shirt", link: "/baseball" },
+      { title: "Casual shirts", link: "/baseball" },
+      { title: "formal shirts", link: "/baseball" },
+      { title: "formal shirts", link: "/baseball" },
+      { title: "formal shirts", link: "/baseball" },
     ],
   },
   {
@@ -29,11 +29,11 @@ const Shop = [
 
     submenu: true,
     sublinks: [
-      { title: "T-shirt", link: "https://www.youtube.com/" },
-      { title: "Casual shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
+      { title: "T-shirt", link: "/basketball" },
+      { title: "Casual shirts", link: "/basketball" },
+      { title: "formal shirts", link: "/basketball" },
+      { title: "formal shirts", link: "/basketball" },
+      { title: "formal shirts", link: "/basketball" },
     ],
   },
   {
@@ -41,11 +41,11 @@ const Shop = [
     name: "Tracksuits",
     submenu: true,
     sublinks: [
-      { title: "T-shirt", link: "https://www.youtube.com/" },
-      { title: "Casual shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
+      { title: "T-shirt", link: "/tracksuits" },
+      { title: "Casual shirts", link: "/tracksuits" },
+      { title: "formal shirts", link: "/tracksuits" },
+      { title: "formal shirts", link: "/tracksuits" },
+      { title: "formal shirts", link: "/tracksuits" },
     ],
   },
   {
@@ -54,10 +54,10 @@ const Shop = [
 
     submenu: true,
     sublinks: [
-      { title: "Casual shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
-      { title: "formal shirts", link: "https://www.youtube.com/" },
+      { title: "Casual shirts", link: "hoodies" },
+      { title: "formal shirts", link: "hoodies" },
+      { title: "formal shirts", link: "hoodies" },
+      { title: "formal shirts", link: "hoodies" },
     ],
   },
 ];

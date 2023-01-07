@@ -19,27 +19,20 @@ const About = () => {
   };
   return (
     <div className="glassmorphism backdrop-blur-sm">
-      <div className="text-center py-10">
+      <div className="text-center md:py-10 py-3">
         <h2 className="md:text-6xl text-2xl">About US</h2>
         <p>Let's take a look at our Company </p>
       </div>
       <motion.div className="md:grid px-6 grid-cols-1 md:grid-cols-2 gap-4">
         <motion.div className="md:p-10 p-4">
-          <TypingText
-            para="Zanzi Sport is a well reputed export industry. We create outstanding sports uniform and other sports related stuff and it is not only manufacturing but also we take care of our customer satisfactory
-          Zanzi Sport is a well reputed export industry. We create outstanding sports uniform and other sports related stuff and it is not only manufacturing but also we take care of our customer satisfactory
-          "
-          />
+          <TypingText para="Welcome to cosmos sports! We are a team of dedicated professionals who are passionate about bringing you the best products at affordable prices. Our mission is to provide our customers with a seamless and enjoyable shopping experience, whether they are looking for the latest fashion trends or everyday essentials." />
           <br />
           <TypingText
-            para="Zanzi Sport is a well reputed export industry. We create outstanding sports uniform and other sports related stuff and it is not only manufacturing but also we take care of our customer satisfactory
-          Zanzi Sport is a well reputed export industry. We create outstanding sports uniform and other sports related stuff and it is not only manufacturing but also we take care of our customer satisfactory
+            para="We carefully create our product selection to ensure that we offer a wide variety of high-quality products that cater to a diverse customer base. From home decor to clothing to beauty products, we have something for everyone.We value our customers and strive to provide excellent customer service. If you have any questions or concerns, please don't hesitate to reach out to us. We are always happy to help.Thank you for choosing us as your go-to destination for all your shopping needs. We look forward to serving you and hope you have a great experience on our website.
           "
           />
         </motion.div>
-        <motion.div>
-          <p>this is a paragraph</p>
-        </motion.div>
+        <motion.div></motion.div>
       </motion.div>
       <Product />
     </div>

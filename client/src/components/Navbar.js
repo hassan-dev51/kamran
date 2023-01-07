@@ -60,7 +60,7 @@ const Navbar = () => {
   });
   return (
     <>
-      <header className="header glassmorphism">
+      <header className="header">
         <div className="header-item item-left">
           <div className="logo">
             <Link to="/">Zanzi Sports</Link>
@@ -105,10 +105,10 @@ const Navbar = () => {
                 >
                   {Menu.map((currElem) => (
                     <div className="list-item text-center" key={currElem.id}>
-                      <a href={currElem.link} target="_blank" rel="noreferrer">
+                      <Link to={currElem.link}>
                         <img src={currElem.image} alt={currElem.heading} />
                         <h4 className="title">{currElem.heading}</h4>
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -129,13 +129,7 @@ const Navbar = () => {
                       {currElem.sublinks.map((sublink, ind) => (
                         <ul key={ind}>
                           <li>
-                            <a
-                              href={sublink.link}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {sublink.title}
-                            </a>
+                            <Link to={sublink.link}>{sublink.title}</Link>{" "}
                           </li>
                         </ul>
                       ))}
