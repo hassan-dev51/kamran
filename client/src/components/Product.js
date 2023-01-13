@@ -14,6 +14,9 @@ const Product = () => {
 
     client.fetch(query).then((data) => setProducts(data));
   }, []);
+  console.log(
+    products.filter((item, ind) => item.name === "American Football")
+  );
   return (
     <div>
       <motion.div
@@ -27,9 +30,8 @@ const Product = () => {
 
       <motion.div>
         <motion.div
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 0.5 }}
           className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:grid-cols-2 px-4 "
         >
           {products

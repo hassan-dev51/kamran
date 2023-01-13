@@ -29,5 +29,23 @@ const Menu = [
     image: "/img/baseball.jpeg",
     heading: "Baseball Shorts",
   },
+  {
+    id: 6,
+    link: "/shirts",
+    image: "/img/shirt.jpeg",
+    heading: "T Shirts",
+  },
+  {
+    id: 7,
+    link: "/jacket",
+    image: "/img/baseball.jpeg",
+    heading: "Jackets",
+  },
+  {
+    id: 8,
+    link: "/gloves",
+    image: "/img/gloves.jpeg",
+    heading: "Gloves",
+  },
 ];
 export default Menu;

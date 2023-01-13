@@ -18,9 +18,9 @@ const About = () => {
     );
   };
   return (
-    <div className="glassmorphism backdrop-blur-sm">
+    <div className="bg-[#dcdcdc] backdrop-blur-sm">
       <div className="text-center md:py-10 py-3">
-        <h2 className="md:text-6xl text-2xl">About US</h2>
+        <h2 className="md:text-6xl text-2xl text-secondary-white">About US</h2>
         <p>Let's take a look at our Company </p>
       </div>
       <motion.div className="md:grid px-6 grid-cols-1 md:grid-cols-2 gap-4">

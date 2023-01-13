@@ -14,7 +14,6 @@ const Navbar = () => {
 
   //close the menu by clicking outside
   const ref = useRef();
-  const inputRef = useRef();
 
   //to toggle the navbar
   const handleNavbar = () => {
@@ -138,11 +137,22 @@ const Navbar = () => {
                 </div>
               </li>
               <li>
-                <Link to="/">Contact</Link>
+                <Link to="/contact">Contact</Link>
               </li>
-              <div className="search">
-                <input type="text" placeholder="search here" ref={inputRef} />
+              {/* <div className="md:ml-0 ml-[10px]">
+                <Link to="/products" className="flex my-3">
+                  <button className="bg-[#f02d34] hover:bg-gray-300 text-white font-bold py-2 px-4 rounded-full">
+                    Sign Up
+                  </button>
+                </Link>
               </div>
+              <div className="md:ml-0 ml-[10px]">
+                <Link to="/products" className="flex my-3">
+                  <button className=" hover:bg-[#f02d34] hover:text-white  text-secondary-white font-bold py-2 px-4 rounded-full border">
+                    Login
+                  </button>
+                </Link>
+              </div> */}
             </ul>
           </nav>
         </div>

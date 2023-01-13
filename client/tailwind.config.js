@@ -8,7 +8,11 @@ module.exports = {
       lg: "991px",
     },
 
-    extend: {},
+    extend: {
+      colors: {
+        "secondary-white": "#f02d34",
+      },
+    },
   },
   plugins: [],
 };
