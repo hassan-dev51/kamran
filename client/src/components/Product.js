@@ -14,9 +14,7 @@ const Product = () => {
 
     client.fetch(query).then((data) => setProducts(data));
   }, []);
-  console.log(
-    products.filter((item, ind) => item.name === "American Football")
-  );
+
   return (
     <div>
       <motion.div

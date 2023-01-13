@@ -11,6 +11,11 @@ export default {
       options: {hotspot: true},
     },
     {
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+    },
+    {
       name: 'name',
       title: 'Name',
       type: 'string',

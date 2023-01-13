@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaAngleRight } from "react-icons/fa";
 import logo from "../../src/logo.svg";
 
 import {
-  american,
   staggerContainer,
   textContainer,
   textVariant2,
 } from "../../src/constants/motion";
+import { client, urlFor } from "../client";
+import AmericanCard from "../components/AmericanCard";
 
 const TypingText = ({ title }) => (
   <motion.p
@@ -29,6 +29,12 @@ const TypingText = ({ title }) => (
 );
 
 const American = () => {
+  const [americanProducts, setAmericanProducts] = useState([]);
+  useEffect(() => {
+    const query = '*[_type=="products"]';
+    client.fetch(query).then((data) => setAmericanProducts(data));
+  }, []);
+  console.log(americanProducts.map((item) => item._id));
   return (
     <>
       <motion.div
@@ -71,43 +77,29 @@ const American = () => {
 
       <hr />
 
-      <div className="grid lg:grid-cols-2 grid-cols-re">
-        <motion.div
-          initial={{ opacity: 0.3, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "backInOut" }}
-          className="ml-4 p-2 "
-        >
-          {american.map((item, ind) => (
-            <li
-              className="md:text-2xl text-xl p-2 list-none flex gap-3 justify-center items-flex-start"
-              key={ind}
-            >
-              <FaAngleRight
-                fontSize={22}
-                className="text-gray-400 translate-y-2"
-              />{" "}
-              {item.text}
-            </li>
-          ))}
-        </motion.div>
-        <motion.div className="bg-red-400">
-          <motion.img
-            initial={{ opacity: 0, x: -200 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "linear" }}
-            src={logo}
-            alt="logo"
-            className="w-[200px] h-[h-200px]"
-          ></motion.img>
-        </motion.div>
+      <div className="md:px-8 px-4">
+        <div className="py-8 text-center uppercase">
+          <h1 className="text-5xl  text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+            American Football Categories
+          </h1>
+        </div>
+        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
+          {americanProducts
+            .sort((a, b) => {
+              if (a.name < b.name) {
+                return -1;
+              }
+              if (a.name > b.name) {
+                return 1;
+              }
+              return 0;
+            })
+            .filter((item) => item.category === "AmericanUniform")
+            .map((currItem) => (
+              <AmericanCard key={currItem.id} {...currItem} />
+            ))}
+        </div>
       </div>
-
-      <Link to="/products" className="flex justify-center my-3">
-        <button className="bg-[#f02d34] hover:bg-gray-300 text-white font-bold py-2 px-4 rounded-full">
-          View More Products
-        </button>
-      </Link>
     </>
   );
 };
