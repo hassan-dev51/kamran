@@ -8,8 +8,9 @@ import {
   textContainer,
   textVariant2,
 } from "../../src/constants/motion";
-import { client, urlFor } from "../client";
+import { client } from "../client";
 import AmericanCard from "../components/AmericanCard";
+import { BallTriangle } from "react-loader-spinner";
 
 const TypingText = ({ title }) => (
   <motion.p
@@ -49,9 +50,6 @@ const American = () => {
                 AMERICAN <br /> FOOTBALL
               </h1>
               <br />
-              <Link to="/products">
-                <button type="button">Shop Now</button>
-              </Link>
             </div>
             <div className="hero-banner-image">
               <img src={logo} alt="headphones" />
@@ -83,22 +81,35 @@ const American = () => {
             American Football Categories
           </h1>
         </div>
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
-          {americanProducts
-            .sort((a, b) => {
-              if (a.name < b.name) {
-                return -1;
-              }
-              if (a.name > b.name) {
-                return 1;
-              }
-              return 0;
-            })
-            .filter((item) => item.category === "AmericanUniform")
-            .map((currItem) => (
-              <AmericanCard key={currItem.id} {...currItem} />
-            ))}
-        </div>
+        {!americanProducts.length ? (
+          <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#4fa94d"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={`flex justify-center items-center h-[75vh]`}
+            wrapperStyle=""
+            visible={true}
+          />
+        ) : (
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
+            {americanProducts
+              .sort((a, b) => {
+                if (a.name < b.name) {
+                  return -1;
+                }
+                if (a.name > b.name) {
+                  return 1;
+                }
+                return 0;
+              })
+              .filter((item) => item.category === "AmericanUniform")
+              .map((currItem) => (
+                <AmericanCard key={currItem.id} {...currItem} />
+              ))}
+          </div>
+        )}
       </div>
     </>
   );

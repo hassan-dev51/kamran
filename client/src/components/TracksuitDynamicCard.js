@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { client, urlFor } from "../client";
 
-const GlovesDynamicCard = () => {
-  const [hoodiesProducts, setHoodiesProducts] = useState([]);
+const TracksuitDynamicCard = () => {
+  const [tracksuitProducts, serTracksuitProducts] = useState([]);
 
   const { _id } = useParams();
 
   useEffect(() => {
     const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setHoodiesProducts(data));
+    client.fetch(query).then((data) => serTracksuitProducts(data));
   }, []);
 
-  const filteredData = hoodiesProducts.filter((item) => item._id === _id);
+  const filteredData = tracksuitProducts.filter((item) => item._id === _id);
 
   return (
     <div>
@@ -28,4 +28,4 @@ const GlovesDynamicCard = () => {
   );
 };
 
-export default GlovesDynamicCard;
+export default TracksuitDynamicCard;

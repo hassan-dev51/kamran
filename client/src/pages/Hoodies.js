@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
-import { FaAngleRight } from "react-icons/fa";
 import { motion } from "framer-motion";
-
+import { client } from "../client";
 import logo from "../../src/logo.svg";
 
 import {
-  hoodies,
   staggerContainer,
   textContainer,
   textVariant2,
 } from "../../src/constants/motion";
+import HoodiesCard from "../components/HoodiesCard";
+import { BallTriangle } from "react-loader-spinner";
 
 const TypingText = ({ title }) => (
   <motion.p variants={textContainer} className="md:text-center  text-left p-3">
@@ -28,6 +28,11 @@ const TypingText = ({ title }) => (
 );
 
 const Hoodies = () => {
+  const [HoodiesProducts, setHoodiesProducts] = useState([]);
+  useEffect(() => {
+    const query = '*[_type=="products"]';
+    client.fetch(query).then((data) => setHoodiesProducts(data));
+  }, []);
   return (
     <>
       <motion.div
@@ -40,9 +45,6 @@ const Hoodies = () => {
             <div>
               <h1>Hoodies</h1>
               <br />
-              <Link to="/products">
-                <button type="button">Shop Now</button>
-              </Link>
             </div>
             <div className="hero-banner-image">
               <img src={logo} alt="headphones" />
@@ -65,40 +67,41 @@ const Hoodies = () => {
         <TypingText title="Designed for everyday wear, our hoodies are perfect for any occasion" />
       </motion.div>
       <hr />
-      <div className="grid lg:grid-cols-2 grid-cols-re">
-        <motion.div
-          initial={{ opacity: 0.3, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "backInOut" }}
-          className="ml-4 p-2"
-        >
-          {hoodies.map((item, ind) => (
-            <li
-              className="md:text-2xl text-xl p-2 list-none flex gap-3 justify-center items-start"
-              key={ind}
-            >
-              <FaAngleRight
-                fontSize={22}
-                className="text-gray-400 translate-y-2"
-              />{" "}
-              {item.text}
-            </li>
-          ))}
-        </motion.div>
-        <motion.div className="bg-red-400">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-            pariatur sunt modi harum soluta dolorum reiciendis, illo quod
-            aliquid maiores in doloribus. Sed alias labore dolorem, maiores
-            dolore ullam amet!
-          </p>
-        </motion.div>
-      </div>
-      <Link to="/products" className="flex justify-center my-3">
-        <button class="bg-[#f02d34] hover:bg-gray-300 text-white font-bold py-2 px-4 rounded-full">
-          View More Products
-        </button>
-      </Link>
+      {!HoodiesProducts.length ? (
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          wrapperClass={`flex justify-center items-center h-[75vh]`}
+          wrapperStyle=""
+          visible={true}
+        />
+      ) : (
+        <div className="md:px-8 px-4">
+          <div className="py-8 text-center uppercase">
+            <h1 className="text-5xl  text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+              Categories of Hoodies
+            </h1>
+          </div>
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
+            {HoodiesProducts.sort((a, b) => {
+              if (a.name < b.name) {
+                return -1;
+              }
+              if (a.name > b.name) {
+                return 1;
+              }
+              return 0;
+            })
+              .filter((item) => item.category === "Hoodies")
+              .map((currItem) => (
+                <HoodiesCard key={currItem.id} {...currItem} />
+              ))}
+          </div>
+        </div>
+      )}
     </>
   );
 };

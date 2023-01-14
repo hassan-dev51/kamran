@@ -11,6 +11,7 @@ import {
   textVariant2,
 } from "../../src/constants/motion";
 import BasketballCard from "../components/BasketballCard";
+import { BallTriangle } from "react-loader-spinner";
 
 const TypingText = ({ title }) => (
   <motion.p variants={textContainer} className="md:text-center text-left p-3">
@@ -44,9 +45,6 @@ const BasketBall = () => {
             <div>
               <h1>BasketBall</h1>
               <br />
-              <Link to="/products">
-                <button type="button">Shop Now</button>
-              </Link>
             </div>
             <div className="hero-banner-image">
               <img src={logo} alt="headphones" />
@@ -76,22 +74,35 @@ const BasketBall = () => {
             Categories of baseball product
           </h1>
         </div>
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
-          {basketBallProducts
-            .sort((a, b) => {
-              if (a.name < b.name) {
-                return -1;
-              }
-              if (a.name > b.name) {
-                return 1;
-              }
-              return 0;
-            })
-            .filter((item) => item.category === "BasketBallUniform")
-            .map((currItem) => (
-              <BasketballCard key={currItem.id} {...currItem} />
-            ))}
-        </div>
+        {!basketBallProducts.length ? (
+          <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#4fa94d"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={`flex justify-center items-center h-[75vh]`}
+            wrapperStyle=""
+            visible={true}
+          />
+        ) : (
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
+            {basketBallProducts
+              .sort((a, b) => {
+                if (a.name < b.name) {
+                  return -1;
+                }
+                if (a.name > b.name) {
+                  return 1;
+                }
+                return 0;
+              })
+              .filter((item) => item.category === "BasketBallUniform")
+              .map((currItem) => (
+                <BasketballCard key={currItem.id} {...currItem} />
+              ))}
+          </div>
+        )}
       </div>
     </>
   );

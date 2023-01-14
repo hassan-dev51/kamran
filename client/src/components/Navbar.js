@@ -94,7 +94,9 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
               </li>
               <li className={"menu-item-has-children"}>
-                <Link onClick={newsFunc}>Products</Link>
+                <Link to="/products" onClick={newsFunc}>
+                  Products
+                </Link>
                 <div
                   className={`${
                     news

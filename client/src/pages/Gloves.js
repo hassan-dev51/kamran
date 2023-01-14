@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { client } from "../client";
 import logo from "../../src/logo.svg";
 
@@ -11,6 +10,7 @@ import {
   textVariant2,
 } from "../../src/constants/motion";
 import GlovesCard from "../components/GlovesCard";
+import { BallTriangle } from "react-loader-spinner";
 
 const TypingText = ({ title }) => (
   <motion.p variants={textContainer} className="md:text-center text-left p-3">
@@ -44,9 +44,6 @@ const Gloves = () => {
             <div>
               <h1>Gloves</h1>
               <br />
-              <Link to="/products">
-                <button type="button">Shop Now</button>
-              </Link>
             </div>
             <div className="hero-banner-image">
               <img src={logo} alt="headphones" />
@@ -76,6 +73,19 @@ const Gloves = () => {
             Categories of gloves
           </h1>
         </div>
+      </div>
+      {!GlovesProducts.length ? (
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          wrapperClass={`flex justify-center items-center h-[75vh]`}
+          wrapperStyle=""
+          visible={true}
+        />
+      ) : (
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
           {GlovesProducts.sort((a, b) => {
             if (a.name < b.name) {
@@ -91,7 +101,7 @@ const Gloves = () => {
               <GlovesCard key={currItem.id} {...currItem} />
             ))}
         </div>
-      </div>
+      )}
     </>
   );
 };
