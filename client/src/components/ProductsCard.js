@@ -2,8 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { urlFor } from "../client";
 import { Link } from "react-router-dom";
-import { BallTriangle } from "react-loader-spinner";
-const ProductsCard = ({ image, name, price, _id, category, products }) => {
+const ProductsCard = ({ image, name, price, _id, category }) => {
   return (
     <div>
       <motion.div
