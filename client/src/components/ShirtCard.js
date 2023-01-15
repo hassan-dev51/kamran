@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { urlFor } from "../client";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 const ShirtCard = ({ image, name, price, _id }) => {
   return (
     <div>
@@ -12,16 +14,17 @@ const ShirtCard = ({ image, name, price, _id }) => {
         transition={{ duration: 1, ease: "linear" }}
         className="bg-[rgba(255,255,255,0.1)] shadow-lg h-full rounded-3xl"
       >
-        <div className="">
-          <img className="w-2/5 m-auto" src={urlFor(image)} alt="Cad" />
-          <div className="px-6 py-4">
-            <div className="font-medium text-xl mb-2">{name}</div>
-            <span className="text-gray-700 text-base">$ {price}</span>
-          </div>
-          <div className="px-6 py-4">
-            <Link to={`/shirts/${_id}`}>View Details</Link>
-          </div>
-        </div>
+        <Card style={{ width: "100%", height: "100%" }}>
+          <Card.Img variant="top" className="h-[200px]" src={urlFor(image)} />
+          <Card.Body className="h-full">
+            <Card.Title className="text-blue-500">{name}</Card.Title>
+            <Card.Title>$ {price}</Card.Title>
+
+            <Link to={`/gloves/${_id}`}>
+              <Button variant="primary">View Details</Button>
+            </Link>
+          </Card.Body>
+        </Card>
       </motion.div>
     </div>
   );
