@@ -20,7 +20,7 @@ const BasketballCard = ({ image, name, price, _id }) => {
             <Card.Title className="text-blue-500">{name}</Card.Title>
             <Card.Title>$ {price}</Card.Title>
 
-            <Link to={`/basketball/${_id}`}>
+            <Link to={`/products/${_id}`}>
               <Button variant="primary">View Details</Button>
             </Link>
           </Card.Body>
