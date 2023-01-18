@@ -12,7 +12,7 @@ const ShirtCard = ({ image, name, price, _id }) => {
         initial={{ opacity: 0, x: -200 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "linear" }}
-        className="bg-[rgba(255,255,255,0.1)] shadow-lg h-full rounded-3xl"
+        className="bg-[rgba(255,255,255,0.1)] shadow-lg h-full rounded-3xl gri"
       >
         <Card style={{ width: "100%", height: "100%" }}>
           <Card.Img variant="top" className="h-[200px]" src={urlFor(image)} />

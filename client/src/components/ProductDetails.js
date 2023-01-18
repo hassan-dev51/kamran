@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { BallTriangle } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
+
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { client, urlFor } from "../client";
 
 const ProductDetails = () => {
@@ -33,15 +35,11 @@ const ProductDetails = () => {
         />
       ) : (
         filteredData.map((currElem, ind) => (
-          <div
-            key={ind}
-            className="p-8 grid"
-            style={{ gridTemplateColumns: "1fr 2fr" }}
-          >
-            <Card style={{ width: "90%" }}>
+          <div key={ind} className="p-8 grid md:grid-cols-2 grid-cols-1">
+            <Card style={{ width: "80%" }}>
               <Card.Img
                 variant="top"
-                className="h-[full]"
+                className="h-full"
                 src={urlFor(currElem.image)}
               />
             </Card>
@@ -66,6 +64,11 @@ const ProductDetails = () => {
               <Card.Title className="py-2 text-green-800 border w-[90px] text-center">
                 $ {currElem.price}
               </Card.Title>
+
+              <Card.Title className="py-2 text-red-500 mt-4">
+                {" "}
+                Description
+              </Card.Title>
               <Card.Text
                 className="py-2 capitalize text-gray-600 "
                 style={{ fontSize: "1.3rem" }}
@@ -73,6 +76,18 @@ const ProductDetails = () => {
                 {currElem.decription}
               </Card.Text>
               <hr />
+              <div className="quantity">
+                <h3>Quantity:</h3>
+                <p className="quantity-desc">
+                  <span className="minus">
+                    <AiOutlineMinus />
+                  </span>
+                  <span className="num">34</span>
+                  <span className="plus">
+                    <AiOutlinePlus />
+                  </span>
+                </p>
+              </div>
               <Button variant="success">Place Order</Button>
             </Card.Body>
           </div>

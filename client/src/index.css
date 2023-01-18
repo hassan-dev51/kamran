@@ -54,9 +54,17 @@
 .activePagination a {
   background-color: #f02d34;
 }
+
 @media screen and (max-width: 768px) {
   .hero-banner-container h1 {
     font-size: 2em;
+  }
+  .MuiStepper-horizontal {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: flex-start !important;
+    margin-bottom: 2rem;
   }
   .paginationbtn {
     padding: 0.5rem;
@@ -97,4 +105,79 @@
 }
 .box-shadow {
   box-shadow: rgba(0, 0, 0, 0.5);
+}
+.quantity {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  align-items: center;
+}
+.quantity-desc {
+  border: 1px solid gray;
+
+  display: flex;
+  align-items: center;
+}
+.quantity-desc span {
+  font-size: 30px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.quantity-desc .minus {
+  border-right: 1px solid gray;
+  color: #f02d34;
+}
+.quantity-desc .num {
+  border-right: 1px solid gray;
+  font-size: 20px;
+}
+.quantity-desc .plus {
+  color: rgb(49, 168, 49);
+}
+
+.product-container {
+  margin-top: 10px;
+  height: 60vh;
+}
+.product {
+  padding: 20px 5px;
+}
+.product .cart-product-image {
+  width: 25%;
+  height: 25%;
+}
+
+.item-desc .flex {
+  width: 200px;
+}
+.top {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.item-desc .flex {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  color: #324d67;
+}
+.item-desc .bottom {
+  margin-top: 60px;
+}
+.item-desc .bottom {
+  margin-top: 30px;
+}
+.flex h5 {
+  font-size: 16px;
+  color: #324d67;
+}
+.flex h4 {
+  font-size: 16px;
+  color: black;
+}
+.cart-bottom {
+  padding: 30px;
+}
+
+.total h3 {
+  font-size: 20px;
 }

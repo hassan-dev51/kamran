@@ -4,6 +4,8 @@ import ContentLoader from "react-content-loader";
 
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const App = React.lazy(() => import("./App"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -26,6 +28,8 @@ const Loader = () => (
 
 root.render(
   <Suspense fallback={<Loader />}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </Suspense>
 );

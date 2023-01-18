@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { AiOutlineShopping } from "react-icons/ai";
 import Menu from "../constants/Menu";
 import Shop from "../constants/Shop";
 import "./navbar.css";
+import Cart from "./Cart";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -11,7 +14,8 @@ const Navbar = () => {
   const [blog, setBlog] = useState(false);
   const [pages, setPages] = useState(false);
   const [text, setText] = useState("");
-
+  const [showCart, setShowCart] = useState(false);
+  //
   //close the menu by clicking outside
   const ref = useRef();
 
@@ -40,12 +44,12 @@ const Navbar = () => {
   };
   //to toggle the sub-menu
   const newsFunc = () => {
-    setText("News");
+    setText("Products");
     setNews(!news);
   };
   const shopFunc = () => {
     setShop(!shop);
-    setText("Shop");
+    setText("Categories");
   };
 
   useEffect(() => {
@@ -57,6 +61,7 @@ const Navbar = () => {
 
     document.addEventListener("mousedown", handler);
   });
+
   return (
     <>
       <header className="header">
@@ -106,7 +111,7 @@ const Navbar = () => {
                 >
                   {Menu.map((currElem) => (
                     <div className="list-item text-center" key={currElem.id}>
-                      <Link to={currElem.link}>
+                      <Link to={currElem.link} onClick={() => setToggle(false)}>
                         <img src={currElem.image} alt={currElem.heading} />
                         <h4 className="title">{currElem.heading}</h4>
                       </Link>
@@ -130,7 +135,12 @@ const Navbar = () => {
                       {currElem.sublinks.map((sublink, ind) => (
                         <ul key={ind}>
                           <li>
-                            <Link to={sublink.link}>{sublink.title}</Link>{" "}
+                            <Link
+                              to={sublink.link}
+                              onClick={() => setToggle(false)}
+                            >
+                              {sublink.title}
+                            </Link>{" "}
                           </li>
                         </ul>
                       ))}
@@ -141,20 +151,19 @@ const Navbar = () => {
               <li>
                 <Link to="/contact">Contact</Link>
               </li>
-              {/* <div className="md:ml-0 ml-[10px]">
-                <Link to="/products" className="flex my-3">
-                  <button className="bg-[#f02d34] hover:bg-gray-300 text-white font-bold py-2 px-4 rounded-full">
-                    Sign Up
-                  </button>
-                </Link>
-              </div>
-              <div className="md:ml-0 ml-[10px]">
-                <Link to="/products" className="flex my-3">
-                  <button className=" hover:bg-[#f02d34] hover:text-white  text-secondary-white font-bold py-2 px-4 rounded-full border">
-                    Login
-                  </button>
-                </Link>
-              </div> */}
+              <li>
+                <button
+                  type="button"
+                  className="flex text-3xl text-gray-500 cursor-pointer relative transition ease-in-out delay-150 border-none bg-transparent hover:scale-x-110"
+                  onClick={() => setShowCart(true)}
+                >
+                  <AiOutlineShopping />
+
+                  <span className="absolute -right-5 text-sm text-gray-900 bg-slate-200 w-[24px] h-[24px] rounded-full text-center font-semibold -top-2 flex items-center justify-center">
+                    12
+                  </span>
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
@@ -166,6 +175,7 @@ const Navbar = () => {
           </div>
         </div>
       </header>
+      {showCart && <Cart setShowCart={setShowCart} />}
     </>
   );
 };

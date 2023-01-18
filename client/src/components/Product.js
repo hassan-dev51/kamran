@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Card from "react-bootstrap/Card";
 import { client } from "../client";
 
 import { Link } from "react-router-dom";
@@ -14,19 +15,20 @@ const Product = () => {
 
     client.fetch(query).then((data) => setProducts(data));
   }, []);
-
   return (
     <div>
       <motion.div
         initial={{ opacity: 0, y: -100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="text-center py-10"
+        className="text-center py-10 bg-black"
       >
-        <h2 className="md:text-6xl text-2xl">Our Feature Products</h2>
+        <h2 className="md:text-6xl text-2xl text-red-500">
+          Our Feature Products
+        </h2>
       </motion.div>
 
-      <motion.div>
+      <motion.div className="bg-black">
         <motion.div
           whileInView={{ opacity: [0, 1] }}
           transition={{ duration: 0.5 }}
@@ -44,18 +46,41 @@ const Product = () => {
             })
             .map((currElem, ind) => (
               <motion.div
+                initial={{ scale: 1, opacity: 0.3 }}
+                whileHover={{ scale: 1.1 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: "backInOut" }}
                 key={ind}
-                className="bg-slate-300 lg:p-4 lg:m-4 md:m-3 md:p-3  p-2 m-2 flex flex-col justify-center items-start"
+                className="backdrop-blur-sm bg-black z-10 border-[1px] lg:p-4 lg:m-4 md:m-3 md:p-3  p-2 m-2 "
               >
-                <Link to="/products">
-                  <img
-                    src={urlFor(currElem.image).url()}
-                    alt={currElem.name}
-                    loading="lazy"
-                    className="w-2/4"
-                  />
+                <Link to={`/${currElem.slug.current}`}>
+                  <Card style={{ width: "100%", height: "100%" }}>
+                    <Card.Img
+                      variant="top"
+                      className="h-[200px]"
+                      src={urlFor(currElem.image)}
+                    />
+                    <Card.Body className="h-full bg-black">
+                      <Card.Title className="text-blue-500">Product</Card.Title>
+                      <Card.Subtitle className="py-2 text-red-500">
+                        {currElem.name}
+                      </Card.Subtitle>
+
+                      <Card.Title className="text-gray-500">Details</Card.Title>
+                      <Card.Text className="text-white">
+                        {currElem.details}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                  {/* <div className="w-1/2">
+                    <img
+                      src={urlFor(currElem.image).url()}
+                      alt={currElem.name}
+                      loading="lazy"
+                    />
+                  </div>
                   <h2>{currElem.name}</h2>
-                  <p>{currElem.details}</p>
+                  <p>{currElem.details}</p> */}
                 </Link>
               </motion.div>
             ))}

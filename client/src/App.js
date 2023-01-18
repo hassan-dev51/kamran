@@ -18,6 +18,7 @@ import Shirts from "./pages/Shirts";
 import Gloves from "./pages/Gloves";
 import CustomRouter from "./router/CustomRouter";
 import ProductDetails from "./components/ProductDetails";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="shirts" element={<Shirts />} />
           <Route exact path="gloves" element={<Gloves />} />
           <Route exact path="contact" element={<Contact />} />
+          <Route exact path="cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </CustomRouter>
         <Footer />

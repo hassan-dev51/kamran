@@ -98,7 +98,7 @@ const Baseball = () => {
               })
               .filter((item) => item.category === "BaseBallUniform")
               .map((currItem) => (
-                <BaseBallCard key={currItem.id} {...currItem} />
+                <BaseBallCard key={currItem._id} {...currItem} />
               ))}
           </div>
         </div>

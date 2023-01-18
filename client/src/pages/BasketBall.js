@@ -31,7 +31,6 @@ const BasketBall = () => {
     const query = '*[_type=="products"]';
     client.fetch(query).then((data) => setBasketBallProducts(data));
   }, []);
-  console.log(basketBallProducts);
   return (
     <>
       <motion.div
@@ -98,7 +97,7 @@ const BasketBall = () => {
               })
               .filter((item) => item.category === "BasketBallUniform")
               .map((currItem) => (
-                <BasketballCard key={currItem.id} {...currItem} />
+                <BasketballCard key={currItem._id} {...currItem} />
               ))}
           </div>
         )}
