@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { motion } from "framer-motion";
-import { client } from "../client";
 import logo from "../../src/logo.svg";
 
 import {
@@ -11,6 +10,7 @@ import {
 } from "../../src/constants/motion";
 import TracksuitCard from "../components/TracksuitCard";
 import { BallTriangle } from "react-loader-spinner";
+import { useCategoryContent } from "../context/categoryContext";
 
 const TypingText = ({ title }) => (
   <motion.p variants={textContainer} className="md:text-center text-left p-3">
@@ -26,11 +26,7 @@ const TypingText = ({ title }) => (
   </motion.p>
 );
 const Tracksuits = () => {
-  const [TracksuitProducts, setTracksuitProducts] = useState([]);
-  useEffect(() => {
-    const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setTracksuitProducts(data));
-  }, []);
+  const { products } = useCategoryContent();
   return (
     <>
       <motion.div
@@ -71,7 +67,7 @@ const Tracksuits = () => {
             Categories of Tracksuit
           </h1>
         </div>
-        {!TracksuitProducts.length ? (
+        {!products.length ? (
           <BallTriangle
             height={100}
             width={100}
@@ -84,18 +80,19 @@ const Tracksuits = () => {
           />
         ) : (
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
-            {TracksuitProducts.sort((a, b) => {
-              if (a.name < b.name) {
-                return -1;
-              }
-              if (a.name > b.name) {
-                return 1;
-              }
-              return 0;
-            })
+            {products
+              .sort((a, b) => {
+                if (a.name < b.name) {
+                  return -1;
+                }
+                if (a.name > b.name) {
+                  return 1;
+                }
+                return 0;
+              })
               .filter((item) => item.category === "TrackSuits")
               .map((currItem) => (
-                <TracksuitCard key={currItem.id} {...currItem} />
+                <TracksuitCard key={currItem._id} {...currItem} />
               ))}
           </div>
         )}

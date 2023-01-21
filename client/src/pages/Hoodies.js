@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { motion } from "framer-motion";
-import { client } from "../client";
 import logo from "../../src/logo.svg";
 
 import {
@@ -11,6 +10,7 @@ import {
 } from "../../src/constants/motion";
 import HoodiesCard from "../components/HoodiesCard";
 import { BallTriangle } from "react-loader-spinner";
+import { useCategoryContent } from "../context/categoryContext";
 
 const TypingText = ({ title }) => (
   <motion.p variants={textContainer} className="md:text-center  text-left p-3">
@@ -27,11 +27,7 @@ const TypingText = ({ title }) => (
 );
 
 const Hoodies = () => {
-  const [HoodiesProducts, setHoodiesProducts] = useState([]);
-  useEffect(() => {
-    const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setHoodiesProducts(data));
-  }, []);
+  const { products } = useCategoryContent();
   return (
     <>
       <motion.div
@@ -66,7 +62,7 @@ const Hoodies = () => {
         <TypingText title="Designed for everyday wear, our hoodies are perfect for any occasion" />
       </motion.div>
       <hr />
-      {!HoodiesProducts.length ? (
+      {!products.length ? (
         <BallTriangle
           height={100}
           width={100}
@@ -85,18 +81,19 @@ const Hoodies = () => {
             </h1>
           </div>
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
-            {HoodiesProducts.sort((a, b) => {
-              if (a.name < b.name) {
-                return -1;
-              }
-              if (a.name > b.name) {
-                return 1;
-              }
-              return 0;
-            })
+            {products
+              .sort((a, b) => {
+                if (a.name < b.name) {
+                  return -1;
+                }
+                if (a.name > b.name) {
+                  return 1;
+                }
+                return 0;
+              })
               .filter((item) => item.category === "Hoodies")
               .map((currItem) => (
-                <HoodiesCard key={currItem.id} {...currItem} />
+                <HoodiesCard key={currItem._id} {...currItem} />
               ))}
           </div>
         </div>

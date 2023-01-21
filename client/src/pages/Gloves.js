@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { motion } from "framer-motion";
-import { client } from "../client";
 import logo from "../../src/logo.svg";
 
 import {
@@ -11,6 +10,7 @@ import {
 } from "../../src/constants/motion";
 import GlovesCard from "../components/GlovesCard";
 import { BallTriangle } from "react-loader-spinner";
+import { useCategoryContent } from "../context/categoryContext";
 
 const TypingText = ({ title }) => (
   <motion.p variants={textContainer} className="md:text-center text-left p-3">
@@ -26,12 +26,7 @@ const TypingText = ({ title }) => (
   </motion.p>
 );
 const Gloves = () => {
-  const [GlovesProducts, setGlovesProducts] = useState([]);
-  useEffect(() => {
-    const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setGlovesProducts(data));
-  }, []);
-  console.log(GlovesProducts);
+  const { products } = useCategoryContent();
   return (
     <>
       <motion.div
@@ -74,7 +69,7 @@ const Gloves = () => {
           </h1>
         </div>
       </div>
-      {!GlovesProducts.length ? (
+      {!products.length ? (
         <BallTriangle
           height={100}
           width={100}
@@ -87,18 +82,19 @@ const Gloves = () => {
         />
       ) : (
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
-          {GlovesProducts.sort((a, b) => {
-            if (a.name < b.name) {
-              return -1;
-            }
-            if (a.name > b.name) {
-              return 1;
-            }
-            return 0;
-          })
+          {products
+            .sort((a, b) => {
+              if (a.name < b.name) {
+                return -1;
+              }
+              if (a.name > b.name) {
+                return 1;
+              }
+              return 0;
+            })
             .filter((item) => item.category === "Gloves")
             .map((currItem) => (
-              <GlovesCard key={currItem.id} {...currItem} />
+              <GlovesCard key={currItem._id} {...currItem} />
             ))}
         </div>
       )}

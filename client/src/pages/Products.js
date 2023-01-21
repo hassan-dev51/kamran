@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import ProductsCard from "../components/ProductsCard";
 import { BallTriangle } from "react-loader-spinner";
 import ReactPaginate from "react-paginate";
 
-import { client } from "../client";
 import { motion } from "framer-motion";
 import { Button } from "@mui/material";
+import { useCategoryContent } from "../context/categoryContext";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const { products } = useCategoryContent();
+  const [categoryProducts, setCategoryProducts] = useState(products);
+  //pagination code start here
   const [pageNumber, setPageNumber] = useState(0);
-
   const productPerPage = 10;
   const pageVisited = pageNumber * productPerPage;
 
-  const displayProduct = products
+  const displayProduct = categoryProducts
     .slice(pageVisited, pageVisited + productPerPage)
     .sort((a, b) => {
       if (a.name < b.name) {
@@ -28,23 +29,39 @@ const Products = () => {
     })
     .map((currElem) => <ProductsCard key={currElem._id} {...currElem} />);
 
-  const pageCount = Math.ceil(products.length / productPerPage);
+  const pageCount = Math.ceil(categoryProducts.length / productPerPage);
   const onPageChange = ({ selected }) => {
     setPageNumber(selected);
   };
-  useEffect(() => {
-    const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setProducts(data));
-  }, []);
 
+  const categoryFilterButton = (product, property) => {
+    let newValue = product.map((data) => {
+      return data[property];
+    });
+    return (newValue = ["ALL", ...new Set(newValue)]);
+  };
+
+  const filterButton = categoryFilterButton(products, "category");
+
+  const updateFilterFunction = (e) => {
+    let value = e.target.value;
+
+    let filterProducts = products;
+    if (value !== "ALL") {
+      filterProducts = filterProducts.filter((currElem) => {
+        return currElem.category === value;
+      });
+    }
+    setCategoryProducts(filterProducts);
+  };
   return (
     <div>
       <motion.h1 className="py-10 text-center">
         View All Products At One Place
       </motion.h1>
-      <div className="flex flex-row-reverse">
-        <div>
-          {!products.length ? (
+      <div className="flex md:flex-row-reverse flex-col-reverse items-center md:items-start">
+        <div className="w-3/4">
+          {!categoryProducts.length ? (
             <BallTriangle
               height={100}
               width={100}
@@ -56,7 +73,7 @@ const Products = () => {
               visible={true}
             />
           ) : (
-            <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 mb-4 px-8">
+            <div className="grid md:grid-cols-3 sm:grid-cols-1 grid-cols-1 gap-6 mb-4 px-8 ">
               {displayProduct}
             </div>
           )}
@@ -72,30 +89,22 @@ const Products = () => {
             />
           </div>
         </div>
-        <div className="w-1/4 pl-6">
+        <div className="md:w-1/4 w-full p-6">
           <h2 className="text-4xl text-center mb-6">Categories</h2>
-          <div className="flex flex-col gap-2 items-start bg-slate-200">
-            <Button variant="outlined" fullWidth color="primary">
-              American Football
-            </Button>
-            <Button variant="outlined" fullWidth color="primary">
-              Basket Ball
-            </Button>
-            <Button variant="outlined" fullWidth color="primary">
-              Baseball
-            </Button>
-            <Button variant="outlined" fullWidth color="primary">
-              Hoodies
-            </Button>
-            <Button variant="outlined" fullWidth color="primary">
-              Tracksuits
-            </Button>
-            <Button variant="outlined" fullWidth color="primary">
-              Gloves
-            </Button>
-            <Button variant="outlined" fullWidth color="primary">
-              Jackets
-            </Button>
+          <div className="flex flex-col gap-2 items-start">
+            {filterButton.map((category, ind) => (
+              <Button
+                variant="outlined"
+                fullWidth
+                color="primary"
+                key={ind}
+                name="category"
+                value={category}
+                onClick={updateFilterFunction}
+              >
+                {category}
+              </Button>
+            ))}
           </div>
         </div>
       </div>

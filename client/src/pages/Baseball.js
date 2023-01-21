@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { motion } from "framer-motion";
 
@@ -9,9 +9,9 @@ import {
   textContainer,
   textVariant2,
 } from "../../src/constants/motion";
-import { client } from "../client";
 import BaseBallCard from "../components/BaseBallCard";
 import { BallTriangle } from "react-loader-spinner";
+import { useCategoryContent } from "../context/categoryContext";
 
 const TypingText = ({ title }) => (
   <motion.p variants={textContainer} className="md:text-center text-left p-3">
@@ -27,11 +27,7 @@ const TypingText = ({ title }) => (
   </motion.p>
 );
 const Baseball = () => {
-  const [baseBallProducts, setBaseBallProducts] = useState([]);
-  useEffect(() => {
-    const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setBaseBallProducts(data));
-  }, []);
+  const { products } = useCategoryContent();
   return (
     <>
       <motion.div
@@ -67,7 +63,7 @@ const Baseball = () => {
         <TypingText title="Take the diamond by storm in our high performance baseball uniforms" />
       </motion.div>
       <hr />
-      {!baseBallProducts.length ? (
+      {!products.length ? (
         <BallTriangle
           height={100}
           width={100}
@@ -86,7 +82,7 @@ const Baseball = () => {
             </h1>
           </div>
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
-            {baseBallProducts
+            {products
               .sort((a, b) => {
                 if (a.name < b.name) {
                   return -1;

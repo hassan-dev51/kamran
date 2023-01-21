@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import logo from "../../src/logo.svg";
 
@@ -7,9 +7,10 @@ import {
   textContainer,
   textVariant2,
 } from "../../src/constants/motion";
-import { client } from "../client";
+
 import AmericanCard from "../components/AmericanCard";
 import { BallTriangle } from "react-loader-spinner";
+import { useCategoryContent } from "../context/categoryContext";
 
 const TypingText = ({ title }) => (
   <motion.p
@@ -29,12 +30,8 @@ const TypingText = ({ title }) => (
 );
 
 const American = () => {
-  const [americanProducts, setAmericanProducts] = useState([]);
-  useEffect(() => {
-    const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setAmericanProducts(data));
-  }, []);
-  console.log(americanProducts.map((item) => item._id));
+  const { products } = useCategoryContent();
+
   return (
     <>
       <motion.div
@@ -80,7 +77,7 @@ const American = () => {
             American Football Categories
           </h1>
         </div>
-        {!americanProducts.length ? (
+        {!products.length ? (
           <BallTriangle
             height={100}
             width={100}
@@ -93,7 +90,7 @@ const American = () => {
           />
         ) : (
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
-            {americanProducts
+            {products
               .sort((a, b) => {
                 if (a.name < b.name) {
                   return -1;
@@ -105,7 +102,7 @@ const American = () => {
               })
               .filter((item) => item.category === "AmericanUniform")
               .map((currItem) => (
-                <AmericanCard key={currItem.id} {...currItem} />
+                <AmericanCard key={currItem._id} {...currItem} />
               ))}
           </div>
         )}

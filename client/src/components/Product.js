@@ -46,8 +46,8 @@ const Product = () => {
             })
             .map((currElem, ind) => (
               <motion.div
-                initial={{ scale: 1, opacity: 0.3 }}
-                whileHover={{ scale: 1.1 }}
+                initial={{ scale: 0.9, opacity: 0.3 }}
+                whileHover={{ scale: 1 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, ease: "backInOut" }}
                 key={ind}
@@ -72,15 +72,6 @@ const Product = () => {
                       </Card.Text>
                     </Card.Body>
                   </Card>
-                  {/* <div className="w-1/2">
-                    <img
-                      src={urlFor(currElem.image).url()}
-                      alt={currElem.name}
-                      loading="lazy"
-                    />
-                  </div>
-                  <h2>{currElem.name}</h2>
-                  <p>{currElem.details}</p> */}
                 </Link>
               </motion.div>
             ))}

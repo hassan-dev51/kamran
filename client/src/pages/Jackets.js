@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { motion } from "framer-motion";
-import { client } from "../client";
 import logo from "../../src/logo.svg";
 
 import {
@@ -11,6 +10,7 @@ import {
 } from "../../src/constants/motion";
 import JacketCard from "../components/JacketCard";
 import { BallTriangle } from "react-loader-spinner";
+import { useCategoryContent } from "../context/categoryContext";
 
 const TypingText = ({ title }) => (
   <motion.p variants={textContainer} className="md:text-center  text-left p-3">
@@ -27,11 +27,7 @@ const TypingText = ({ title }) => (
 );
 
 const Jackets = () => {
-  const [jacketProducts, setJacketProducts] = useState([]);
-  useEffect(() => {
-    const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setJacketProducts(data));
-  }, []);
+  const { products } = useCategoryContent();
   return (
     <>
       <motion.div
@@ -72,7 +68,7 @@ const Jackets = () => {
             Categories of JACKETS
           </h1>
         </div>
-        {!jacketProducts.length ? (
+        {!products.length ? (
           <BallTriangle
             height={100}
             width={100}
@@ -85,7 +81,7 @@ const Jackets = () => {
           />
         ) : (
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-4">
-            {jacketProducts
+            {products
               .sort((a, b) => {
                 if (a.name < b.name) {
                   return -1;

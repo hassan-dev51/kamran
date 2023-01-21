@@ -11,13 +11,13 @@ const ProductsCard = ({ image, name, price, _id, category }) => {
   return (
     <div>
       <motion.div
-        initial={{ opacity: 0, x: -200 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 1, ease: "linear" }}
       >
         <Card style={{ width: "100%", height: "100%" }}>
           <Card.Img variant="top" className="h-[200px]" src={urlFor(image)} />
-          <Card.Body className="h-full">
+          <Card.Body>
             <Card.Title className="text-gray-400"> Category</Card.Title>
             <Card.Subtitle className="py-2 text-red-500">
               {" "}
