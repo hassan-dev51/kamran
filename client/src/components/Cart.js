@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import {
   AiOutlinePlus,
   AiOutlineMinus,
@@ -9,9 +9,11 @@ import { Button } from "@mui/material";
 import { TiDeleteOutline } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import logo from "../logo.svg";
+import { urlFor } from "../client";
+import { useCategoryContent } from "../context/categoryContext";
 const Cart = ({ setShowCart }) => {
-  console.log("cart");
-
+  const { quantity, total, cartProducts } = useCategoryContent();
+  console.log(quantity);
   return (
     <div className="w-screen bg-[#00000080] fixed right-0 top-0 z-[100] transition-all ">
       <div className="h-screen md:w-[600px] w-[400px] bg-white float-right p-10 relative transition ease-in-out delay-150">
@@ -22,56 +24,65 @@ const Cart = ({ setShowCart }) => {
         >
           <AiOutlineLeft />
           <span className="ml-3">Your Cart</span>
-          <span className="ml-3 text-[#f02d34]">(23 items)</span>
+          <span className="ml-3 text-[#f02d34]">({quantity} items)</span>
         </button>
         {/* empty shopping cart */}
-        {/* <div className="m-10 grid place-items-center gap-3">
-          <AiOutlineShopping size={150} />
-          <h3 className="font-semibold text-xl">Your Shopping Cart is Empty</h3>
-          <Link to="/products">
-            <Button
-              variant="contained"
-              color="error"
-              onClick={() => setShowCart(false)}
-            >
-              Continue Shopping
-            </Button>
-          </Link>
-        </div> */}
+        {cartProducts.length < 1 && (
+          <div className="m-10 grid place-items-center gap-3">
+            <AiOutlineShopping size={150} />
+            <h3 className="font-semibold text-xl">
+              Your Shopping Cart is Empty
+            </h3>
+            <Link to="/products">
+              <Button
+                variant="contained"
+                color="error"
+                onClick={() => setShowCart(false)}
+              >
+                Continue Shopping
+              </Button>
+            </Link>
+          </div>
+        )}
         {/* product shopping cart */}
         <div className="product-container">
-          <div className="product flex ">
-            <img src={logo} alt="error" className="cart-product-image  " />
-            <div className="item-desc">
-              <div className="flex justify-between mr-3">
-                <h5>Jacket</h5>
-                <h4>$ 45</h4>
-              </div>
-              <div className=" mt-3 flex justify-between items-center">
-                <div>
-                  <p className="quantity-desc">
-                    <span className="minus">
-                      <AiOutlineMinus />
-                    </span>
-                    <span className="num" onClick="">
-                      4
-                    </span>
-                    <span className="plus">
-                      <AiOutlinePlus />
-                    </span>
-                  </p>
+          {cartProducts.length >= 1 &&
+            cartProducts.map((item, index) => (
+              <div className="product flex" key={index}>
+                <img
+                  src={urlFor(item.image)}
+                  alt="error"
+                  className="cart-product-image  "
+                />
+                <div className="item-desc">
+                  <div className="flex justify-between mr-3">
+                    <h5>{item.name}</h5>
+                    <h4>$ {item.price}</h4>
+                  </div>
+                  <div className=" mt-3 flex justify-between items-center">
+                    <div>
+                      <p className="quantity-desc">
+                        <span className="minus">
+                          <AiOutlineMinus />
+                        </span>
+                        <span className="num">{item.quantity}</span>
+                        <span className="plus">
+                          <AiOutlinePlus />
+                        </span>
+                      </p>
+                    </div>
+                    <button type="button" className="remove-item">
+                      <TiDeleteOutline />
+                    </button>
+                  </div>
                 </div>
-                <button type="button" className="remove-item">
-                  <TiDeleteOutline />
-                </button>
               </div>
-            </div>
-          </div>
+            ))}
         </div>
         <div className="cart-bottom">
           <div className="total flex justify-between">
             <h3>Sub Total:</h3>
-            <h3>$ 34</h3>
+            <h3>$ {total}</h3>
           </div>
           <div className="btn-container">
             <Button variant="contained" color="success">

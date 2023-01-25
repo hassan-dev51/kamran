@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -6,19 +6,16 @@ import { BallTriangle } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { client, urlFor } from "../client";
+import { urlFor } from "../client";
+import { useCategoryContent } from "../context/categoryContext";
 
 const ProductDetails = () => {
-  const [Products, setProducts] = useState([]);
+  const { products, quantity, increaseQuantity, decreaseQuantity, onAdd } =
+    useCategoryContent();
 
   const { _id } = useParams();
 
-  useEffect(() => {
-    const query = '*[_type=="products"]';
-    client.fetch(query).then((data) => setProducts(data));
-  }, []);
-
-  const filteredData = Products.filter((item) => item._id === _id);
+  const filteredData = products.filter((item) => item._id === _id);
 
   return (
     <div>
@@ -80,15 +77,20 @@ const ProductDetails = () => {
                 <h3>Quantity:</h3>
                 <p className="quantity-desc">
                   <span className="minus">
-                    <AiOutlineMinus />
+                    <AiOutlineMinus onClick={decreaseQuantity} />
                   </span>
-                  <span className="num">34</span>
+                  <span className="num">{quantity}</span>
                   <span className="plus">
-                    <AiOutlinePlus />
+                    <AiOutlinePlus onClick={increaseQuantity} />
                   </span>
                 </p>
               </div>
-              <Button variant="success">Place Order</Button>
+              <Button
+                variant="success"
+                onClick={() => onAdd(filteredData, quantity)}
+              >
+                Place Order
+              </Button>
             </Card.Body>
           </div>
         ))

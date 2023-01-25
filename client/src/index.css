@@ -138,6 +138,7 @@
 .product-container {
   margin-top: 10px;
   height: 60vh;
+  overflow-y: scroll;
 }
 .product {
   padding: 20px 5px;

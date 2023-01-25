@@ -93,7 +93,7 @@ const Jackets = () => {
               })
               .filter((item) => item.category === "Jackets")
               .map((currItem) => (
-                <JacketCard key={currItem.id} {...currItem} />
+                <JacketCard key={currItem._id} {...currItem} />
               ))}
           </div>
         )}

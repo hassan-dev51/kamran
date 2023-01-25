@@ -5,6 +5,7 @@ import Menu from "../constants/Menu";
 import Shop from "../constants/Shop";
 import "./navbar.css";
 import Cart from "./Cart";
+import { useCategoryContent } from "../context/categoryContext";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -14,6 +15,7 @@ const Navbar = () => {
   const [pages, setPages] = useState(false);
   const [text, setText] = useState("");
   const [showCart, setShowCart] = useState(false);
+  const { totalQuantity } = useCategoryContent();
   //
   //close the menu by clicking outside
   const ref = useRef();
@@ -159,7 +161,7 @@ const Navbar = () => {
                   <AiOutlineShopping />
 
                   <span className="absolute -right-5 text-sm text-gray-900 bg-slate-200 w-[24px] h-[24px] rounded-full text-center font-semibold -top-2 flex items-center justify-center">
-                    12
+                    {totalQuantity}
                   </span>
                 </button>
               </li>
