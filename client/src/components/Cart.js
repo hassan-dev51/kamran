@@ -8,12 +8,11 @@ import {
 import { Button } from "@mui/material";
 import { TiDeleteOutline } from "react-icons/ti";
 import { Link } from "react-router-dom";
-import logo from "../logo.svg";
 import { urlFor } from "../client";
 import { useCategoryContent } from "../context/categoryContext";
 const Cart = ({ setShowCart }) => {
-  const { quantity, total, cartProducts } = useCategoryContent();
-  console.log(quantity);
+  const { totalQuantity, total, cartProducts } = useCategoryContent();
+
   return (
     <div className="w-screen bg-[#00000080] fixed right-0 top-0 z-[100] transition-all ">
       <div className="h-screen md:w-[600px] w-[400px] bg-white float-right p-10 relative transition ease-in-out delay-150">
@@ -24,7 +23,7 @@ const Cart = ({ setShowCart }) => {
         >
           <AiOutlineLeft />
           <span className="ml-3">Your Cart</span>
-          <span className="ml-3 text-[#f02d34]">({quantity} items)</span>
+          <span className="ml-3 text-[#f02d34]">({totalQuantity} items)</span>
         </button>
         {/* empty shopping cart */}
         {cartProducts.length < 1 && (
@@ -65,7 +64,7 @@ const Cart = ({ setShowCart }) => {
                         <span className="minus">
                           <AiOutlineMinus />
                         </span>
-                        <span className="num">{item.quantity}</span>
+                        <span className="num">{item.qty}</span>
                         <span className="plus">
                           <AiOutlinePlus />
                         </span>

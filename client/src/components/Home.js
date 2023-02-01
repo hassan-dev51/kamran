@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 
 import { carouselData } from "../constants/Slider";
 import "./home.css";
-import About from "./About";
+// import About from "./About";
+import Choose from "./About";
 
 const Home = () => {
   return (
@@ -37,7 +38,7 @@ const Home = () => {
           </Carousel.Item>
         ))}
       </Carousel>
-      <About />
+      <Choose />
     </div>
   );
 };

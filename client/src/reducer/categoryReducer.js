@@ -1,28 +1,22 @@
 const reducer = (state, action) => {
   switch (action.type) {
-    case "DECREASE_QUANTITY":
-      if (state.quantity - 1 < 1) {
-        return {
-          ...state,
-          quantity: 1,
-        };
-      }
-      return {
-        ...state,
-        quantity: state.quantity - 1,
-      };
-    case "INCREASE_QUANTITY":
-      return {
-        ...state,
-        quantity: state.quantity + 1,
-      };
     case "ADD_PRODUCT":
       let { filteredData, quantity } = action.payload;
       const productPrice = filteredData.map((item) => item.price);
-
+      const test = state.cartProducts.concat(quantity);
+      console.log(test);
       return {
         ...state,
-        cartProducts: [...state.cartProducts, ...filteredData],
+        cartProducts: [
+          ...state.cartProducts[filteredData],
+          // ...filteredData,
+          // test,
+
+          // .concat(filteredData).map((item) => ({
+          //   ...item,
+          //   qty: quantity,
+          // })),
+        ],
         total: state.total + productPrice * quantity,
         totalQuantity: state.totalQuantity + quantity,
       };

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import Rectangle from "./Rectangle 57.png";
 const Testimonials = () => {
   return (
     <div>
@@ -8,11 +8,17 @@ const Testimonials = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="text-center py-10"
+        className="relative"
       >
-        <h2 className="md:text-6xl text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-400 mb-0 pb-3">
-          Recognized by Govt Institutes
-        </h2>
+        <img src={Rectangle} alt="team" className="h-[465px]" />
+        <div className="absolute top-20 w-full">
+          <h2 className="text-yellow-300 text-center py-4">Our Team</h2>
+          <p className="text-center text-white md:text-3xl text-xl">
+            We work with a very focused approach, Our Team heads ensure their
+            departments <br /> run smoothly and the clients are satisfied with
+            the progress.
+          </p>
+        </div>
       </motion.div>
       <motion.div className=""></motion.div>
     </div>

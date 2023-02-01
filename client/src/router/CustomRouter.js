@@ -11,7 +11,7 @@ const CustomRouter = ({ children }) => {
   useEffect(() => {
     setPrevLoc(location.pathname);
     setProgress(true);
-
+    window.scrollTo(0, 0);
     if (location.pathname === prevLoc) {
       setPrevLoc("");
     }

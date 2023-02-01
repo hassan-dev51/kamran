@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -10,13 +10,26 @@ import { urlFor } from "../client";
 import { useCategoryContent } from "../context/categoryContext";
 
 const ProductDetails = () => {
-  const { products, quantity, increaseQuantity, decreaseQuantity, onAdd } =
-    useCategoryContent();
+  const [quantity, setQuantity] = useState(1);
+  const { products, onAdd } = useCategoryContent();
 
   const { _id } = useParams();
 
   const filteredData = products.filter((item) => item._id === _id);
+  const increaseQuantity = () => {
+    setQuantity((preQty) => {
+      return preQty + 1;
+    });
+  };
 
+  const decreaseQuantity = () => {
+    setQuantity((preQty) => {
+      if (preQty - 1 < 1) {
+        return 1;
+      }
+      return preQty - 1;
+    });
+  };
   return (
     <div>
       {!filteredData.length ? (
