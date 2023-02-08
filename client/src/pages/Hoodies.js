@@ -36,20 +36,37 @@ const Hoodies = () => {
         transition={{ duration: 0.8, ease: "easeIn" }}
       >
         <div className="hero-banner-container">
-          <div className="flex justify-between">
-            <div>
-              <h1>Hoodies</h1>
-              <br />
-            </div>
-            <div className="hero-banner-image">
-              <img src={logo} alt="headphones" />
-            </div>
+          <div>
+            <h1 className="text-center">Hoodies</h1>
+            <br />
           </div>
           <div>
-            <div className="desc">
-              <h5>23</h5>
-              <p>details will be displayed here</p>
-            </div>
+            <p className="md:text-xl text-base text-gray-500">
+              {" "}
+              Our hoodies are built to withstand the elements and keep you warm
+              all season long. <br /> <br /> Elevate your everyday style with
+              our advanced hoodies. <br /> <br /> Our hoodies come in a variety
+              of sizes and styles, perfect for everyone. <br /> <br /> Join the
+              ranks of fashion-forward individuals who trust our hoodies to keep
+              them stylish and comfortable. Stay warm and stylish with our
+              top-quality hoodies. <br />
+              <br /> Experience the ultimate comfort and durability with our
+              hoodies. <br />
+              <br /> Designed for everyday wear, our hoodies are perfect for any
+              occasion. <br /> <br /> Make a statement with our bold and
+              fashionable hoodies. <br /> <br /> Our hoodies are made with the
+              highest-quality materials for lasting comfort and style. <br />{" "}
+              <br /> Get ready to conquer the cold with our top-of-the-line
+              hoodies. <br /> <br /> Our hoodies are trusted by customers around
+              the world. <br /> <br /> Get ready to upgrade your wardrobe with
+              our top-of-the-line hoodies. <br /> <br /> Our hoodies are built
+              to withstand the elements and last for years to come. <br />{" "}
+              <br /> Stay comfortable and fashionable no matter where you go
+              with our advanced hoodies. <br /> <br /> Our hoodies are perfect
+              for any occasion and any style. <br /> <br /> Join the ranks of
+              satisfied customers who trust our hoodies to keep them warm and
+              stylish.
+            </p>
           </div>
         </div>
       </motion.div>

@@ -36,20 +36,27 @@ const Baseball = () => {
         transition={{ duration: 0.8, ease: "easeIn" }}
       >
         <div className="hero-banner-container">
-          <div className="flex justify-between">
-            <div>
-              <h1>Baseball</h1>
-              <br />
-            </div>
-            <div className="hero-banner-image">
-              <img src={logo} alt="headphones" />
-            </div>
+          <div>
+            <h1 className="text-center">Baseball</h1>
+            <br />
           </div>
           <div>
-            <div className="desc">
-              <h5>23</h5>
-              <p>details will be displayed here</p>
-            </div>
+            <p className="md:text-xl text-base text-gray-500">
+              Take the diamond by storm in our high-performance baseball
+              uniforms. <br /> <br /> Experience the ultimate comfort and
+              durability with our baseball uniforms. <br /> <br /> Designed for
+              the modern athlete, our baseball uniforms combine style and
+              functionality. <br /> <br /> Make a statement on the field with
+              our bold and stylish baseball uniforms. <br /> <br /> Our baseball
+              uniforms are trusted by top teams and players across the country.{" "}
+              <br /> <br /> Get ready to dominate the competition with our
+              top-quality baseball uniforms. <br /> <br /> Our baseball uniforms
+              are built to withstand the rigors of the diamond. <br /> <br />{" "}
+              Take your game to the next level with our advanced baseball
+              uniforms. <br />
+              <br /> Our baseball uniforms are perfect for players of all skill
+              levels and positions. <br />
+            </p>
           </div>
         </div>
       </motion.div>
@@ -77,7 +84,7 @@ const Baseball = () => {
       ) : (
         <div className="md:px-8 px-4">
           <div className="py-8 text-center uppercase">
-            <h1 className="text-5xl  text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+            <h1 className="md:text-5xl text-xl text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
               Categories of baseball product
             </h1>
           </div>

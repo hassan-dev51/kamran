@@ -19,6 +19,7 @@
     "react-icons": "^4.7.1",
     "react-loader-spinner": "^5.3.4",
     "react-paginate": "^8.1.4",
+    "react-phone-number-input": "^3.2.17",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "react-topbar-progress-indicator": "^4.1.1",

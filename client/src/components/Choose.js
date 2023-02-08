@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Product from "./Product";
 import about from "./m 1.png";
+import Testimonials from "./Testimonials";
 const About = () => {
   return (
     <>
@@ -46,7 +46,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Product />
+      <Testimonials />
     </>
   );
 };

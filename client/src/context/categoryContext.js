@@ -11,19 +11,13 @@ const context = createContext();
 
 const initialState = {
   cartProducts: [],
-  totalQuantity: 0,
-  price: 0,
-  total: 0,
-  items: 0,
 };
 const CategoryContext = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log(state.cartProducts);
-
-  const onAdd = (filteredData, quantity) => {
-    dispatch({ type: "ADD_PRODUCT", payload: { filteredData, quantity } });
+  const onAdd = (filteredData) => {
+    dispatch({ type: "ADD_PRODUCT", payload: { filteredData } });
   };
   useEffect(() => {
     const query = '*[_type=="products"]';

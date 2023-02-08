@@ -1,7 +1,6 @@
 import React from "react";
 
 import { motion } from "framer-motion";
-import logo from "../../src/logo.svg";
 
 import {
   staggerContainer,
@@ -35,20 +34,29 @@ const BasketBall = () => {
         transition={{ duration: 0.8, ease: "easeIn" }}
       >
         <div className="hero-banner-container">
-          <div className="flex justify-between">
-            <div>
-              <h1>BasketBall</h1>
-              <br />
-            </div>
-            <div className="hero-banner-image">
-              <img src={logo} alt="headphones" />
-            </div>
+          <div>
+            <h1 className="text-center ">BasketBall</h1>
+            <br />
           </div>
           <div>
-            <div className="desc">
-              <h5>23</h5>
-              <p>details will be displayed here</p>
-            </div>
+            <p className="md:text-xl text-base text-gray-500">
+              Perform at your best on the court with our top-quality basketball
+              uniforms. <br /> <br /> Experience the ultimate comfort and
+              performance with our basketball uniforms. <br /> <br /> Designed
+              for the modern player, our basketball uniforms combine style and
+              functionality. <br /> <br /> Make a statement on the court with
+              our bold and stylish basketball uniforms. <br /> <br /> Our
+              basketball uniforms are trusted by top teams and players across
+              the country. <br /> <br /> Get ready to dominate the competition
+              with our top-of-the-line basketball uniforms. <br /> <br /> Our
+              basketball uniforms are built to withstand the demands of the
+              game. <br /> <br /> Take your game to the next level with our
+              advanced basketball uniforms. <br /> <br /> Our basketball
+              uniforms are perfect for players of all skill levels and
+              positions. <br /> <br /> Join the ranks of elite athletes who
+              trust our basketball uniforms to help them perform at their best.{" "}
+              <br />
+            </p>
           </div>
         </div>
       </motion.div>
@@ -64,8 +72,8 @@ const BasketBall = () => {
       <hr />
       <div className="md:px-8 px-4">
         <div className="py-8 text-center uppercase">
-          <h1 className="text-5xl  text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
-            Categories of baseball product
+          <h1 className="md:text-5xl text-xl text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+            Categories of basketball product
           </h1>
         </div>
         {!products.length ? (

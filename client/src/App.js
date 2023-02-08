@@ -12,13 +12,11 @@ import Products from "./pages/Products";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import Custom from "./pages/Custom";
 import Jackets from "./pages/Jackets";
 import Shirts from "./pages/Shirts";
 import Gloves from "./pages/Gloves";
 import CustomRouter from "./router/CustomRouter";
 import ProductDetails from "./components/ProductDetails";
-import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -34,12 +32,10 @@ function App() {
           <Route exact path="basketball" element={<BasketBall />} />
           <Route exact path="hoodies" element={<Hoodies />} />
           <Route exact path="tracksuits" element={<Tracksuits />} />
-          <Route exact path="custom" element={<Custom />} />
           <Route exact path="jacket" element={<Jackets />} />
           <Route exact path="shirts" element={<Shirts />} />
           <Route exact path="gloves" element={<Gloves />} />
           <Route exact path="contact" element={<Contact />} />
-          <Route exact path="cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </CustomRouter>
         <Footer />

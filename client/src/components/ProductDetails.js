@@ -1,35 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { BallTriangle } from "react-loader-spinner";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { urlFor } from "../client";
 import { useCategoryContent } from "../context/categoryContext";
 
 const ProductDetails = () => {
-  const [quantity, setQuantity] = useState(1);
   const { products, onAdd } = useCategoryContent();
 
   const { _id } = useParams();
 
   const filteredData = products.filter((item) => item._id === _id);
-  const increaseQuantity = () => {
-    setQuantity((preQty) => {
-      return preQty + 1;
-    });
-  };
 
-  const decreaseQuantity = () => {
-    setQuantity((preQty) => {
-      if (preQty - 1 < 1) {
-        return 1;
-      }
-      return preQty - 1;
-    });
-  };
   return (
     <div>
       {!filteredData.length ? (
@@ -86,24 +71,12 @@ const ProductDetails = () => {
                 {currElem.decription}
               </Card.Text>
               <hr />
-              <div className="quantity">
-                <h3>Quantity:</h3>
-                <p className="quantity-desc">
-                  <span className="minus">
-                    <AiOutlineMinus onClick={decreaseQuantity} />
-                  </span>
-                  <span className="num">{quantity}</span>
-                  <span className="plus">
-                    <AiOutlinePlus onClick={increaseQuantity} />
-                  </span>
-                </p>
-              </div>
-              <Button
-                variant="success"
-                onClick={() => onAdd(filteredData, quantity)}
-              >
-                Place Order
-              </Button>
+
+              <Link to="/contact">
+                <Button variant="success" onClick={() => onAdd(filteredData)}>
+                  Place Order
+                </Button>
+              </Link>
             </Card.Body>
           </div>
         ))

@@ -1,11 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineShopping } from "react-icons/ai";
 import Menu from "../constants/Menu";
 import Shop from "../constants/Shop";
 import "./navbar.css";
-import Cart from "./Cart";
-import { useCategoryContent } from "../context/categoryContext";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -14,8 +11,6 @@ const Navbar = () => {
   const [blog, setBlog] = useState(false);
   const [pages, setPages] = useState(false);
   const [text, setText] = useState("");
-  const [showCart, setShowCart] = useState(false);
-  const { totalQuantity } = useCategoryContent();
   //
   //close the menu by clicking outside
   const ref = useRef();
@@ -152,19 +147,6 @@ const Navbar = () => {
               <li>
                 <Link to="/contact">Contact</Link>
               </li>
-              <li>
-                <button
-                  type="button"
-                  className="flex text-3xl text-gray-500 cursor-pointer relative transition ease-in-out delay-150 border-none bg-transparent hover:scale-x-110"
-                  onClick={() => setShowCart(true)}
-                >
-                  <AiOutlineShopping />
-
-                  <span className="absolute -right-5 text-sm text-gray-900 bg-slate-200 w-[24px] h-[24px] rounded-full text-center font-semibold -top-2 flex items-center justify-center">
-                    {totalQuantity}
-                  </span>
-                </button>
-              </li>
             </ul>
           </nav>
         </div>
@@ -176,7 +158,6 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-      {showCart && <Cart setShowCart={setShowCart} />}
     </>
   );
 };

@@ -55,7 +55,7 @@ const Products = () => {
     setCategoryProducts(filterProducts);
   };
   return (
-    <div>
+    <div className="">
       <motion.h1 className="py-10 text-center">
         View All Products At One Place
       </motion.h1>

@@ -35,20 +35,28 @@ const Tracksuits = () => {
         transition={{ duration: 0.8, ease: "easeIn" }}
       >
         <div className="hero-banner-container">
-          <div className="flex justify-between">
-            <div>
-              <h1>TrackSuits</h1>
-              <br />
-            </div>
-            <div className="hero-banner-image">
-              <img src={logo} alt="headphones" />
-            </div>
-          </div>
           <div>
-            <div className="desc">
-              <h5>23</h5>
-              <p>details will be displayed here</p>
-            </div>
+            <h1 className="text-center">TrackSuits</h1>
+            <br />
+          </div>
+
+          <div className="md:text-xl text-base text-gray-500">
+            <p>
+              Stay comfortable and stylish with our top-quality tracksuits.{" "}
+              <br />
+              <br /> Experience the ultimate comfort and performance with our
+              tracksuits. <br /> <br /> Designed for the modern lifestyle, our
+              tracksuits combine fashion and function. <br /> <br /> Our
+              tracksuits are trusted by customers around the world. <br />{" "}
+              <br /> Get ready to upgrade your wardrobe with our top-of-the-line
+              tracksuits. <br /> <br /> Our tracksuits are built to withstand
+              the elements and last for years to come. <br /> <br /> Stay
+              comfortable and fashionable no matter where you go with our
+              advanced tracksuits. <br /> <br /> Our tracksuits are perfect for
+              any occasion and any style. <br /> <br /> Join the ranks of
+              satisfied customers who trust our tracksuits to keep them
+              comfortable and stylish
+            </p>
           </div>
         </div>
       </motion.div>
@@ -63,7 +71,7 @@ const Tracksuits = () => {
       <hr />
       <div className="md:px-8 px-4">
         <div className="py-8 text-center uppercase">
-          <h1 className="text-5xl  text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+          <h1 className="md:text-5xl text-xl  text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
             Categories of Tracksuit
           </h1>
         </div>

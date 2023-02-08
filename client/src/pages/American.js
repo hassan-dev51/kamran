@@ -40,22 +40,47 @@ const American = () => {
         transition={{ duration: 0.8, ease: "easeIn" }}
       >
         <div className="hero-banner-container">
-          <div className="flex justify-between">
-            <div>
-              <h1>
-                AMERICAN <br /> FOOTBALL
-              </h1>
-              <br />
-            </div>
-            <div className="hero-banner-image">
-              <img src={logo} alt="headphones" />
-            </div>
+          <div>
+            <h1 className="text-center">AMERICAN FOOTBALL</h1>
+            <br />
           </div>
           <div>
-            <div className="desc">
-              <h5>23</h5>
-              <p>details will be displayed here</p>
-            </div>
+            <p className="md:text-xl text-base text-gray-500">
+              Get ready for game day with our high-performance American football
+              uniforms. <br />
+              <br /> Make a statement on the field with our stylish and durable
+              American football uniforms. <br />
+              <br /> Crafted with the latest technologies and materials, our
+              American football uniforms are built to last. <br />
+              <br /> From practice to game day, our American football uniforms
+              will keep you comfortable and focused. <br />
+              <br /> Stand out from the competition with our unique and
+              customizable American football uniforms. <br />
+              <br /> Our American football uniforms are trusted by top teams and
+              players across the country. <br />
+              <br /> Designed with the athlete in mind, our American football
+              uniforms will help you perform at your best. <br />
+              <br /> Get the complete American football uniform package of
+              jersey, pants, socks, and more. <br />
+              <br /> Join the ranks of elite players who trust our American
+              football uniforms to help them succeed on the field. <br />
+              <br /> The perfect choice for any team. <br />
+              <br /> Step onto the field with confidence in our high-performance
+              American football uniforms. <br />
+              <br /> Experience the ultimate comfort and durability with our
+              American football uniforms. <br />
+              <br /> Designed for the modern athlete, our American football
+              uniforms combine style and functionality. <br />
+              <br />
+              Our American football uniforms are built to withstand the toughest
+              tackles and hits. <br />
+              <br /> Take your game to the next level with our advanced American
+              football uniforms. <br />
+              <br /> Our American football uniforms are perfect for players of
+              all skill levels and positions. <br />
+              <br /> Join the ranks of elite athletes who trust our American
+              football uniforms to help them perform at their best.
+            </p>
           </div>
         </div>
       </motion.div>

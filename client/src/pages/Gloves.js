@@ -35,20 +35,29 @@ const Gloves = () => {
         transition={{ duration: 0.8, ease: "easeIn" }}
       >
         <div className="hero-banner-container">
-          <div className="flex justify-between">
-            <div>
-              <h1>Gloves</h1>
-              <br />
-            </div>
-            <div className="hero-banner-image">
-              <img src={logo} alt="headphones" />
-            </div>
+          <div>
+            <h1 className="text-center">Gloves</h1>
+            <br />
           </div>
           <div>
-            <div className="desc">
-              <h5>23</h5>
-              <p>details will be displayed here</p>
-            </div>
+            <p className="md:text-xl text-base text-gray-500">
+              Introducing our new line of baseball gloves, perfect for players
+              of all levels. Made with high-quality leather and advanced
+              materials, these gloves offer superior durability and performance.
+              The ergonomic design ensures a comfortable fit and improved grip,
+              while the strategically placed padding protects your hand from
+              impact. Available in a variety of sizes and colors, our baseball
+              gloves are suitable for both right and left-handed players. And
+              for the goalkeepers, we present our advanced goalkeeping gloves.
+              The gloves feature a professional-grade latex palm that provides
+              superior grip and control, even in wet conditions. The backhand is
+              made of durable and flexible material that moves with your hand,
+              allowing for maximum flexibility and movement. The gloves have an
+              adjustable closure that allows for a secure and customized fit.
+              Whether you're a seasoned pro or just starting out, our baseball
+              and goalkeeping gloves are the perfect choice for your game. Order
+              yours today and take your performance to the next level!
+            </p>
           </div>
         </div>
       </motion.div>

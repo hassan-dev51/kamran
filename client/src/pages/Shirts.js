@@ -36,20 +36,30 @@ const Shirt = () => {
         transition={{ duration: 0.8, ease: "easeIn" }}
       >
         <div className="hero-banner-container">
-          <div className="flex justify-between">
-            <div>
-              <h1>Shirts</h1>
-              <br />
-            </div>
-            <div className="hero-banner-image">
-              <img src={logo} alt="headphones" />
-            </div>
+          <div>
+            <h1 className="text-center">Shirts</h1>
+            <br />
           </div>
           <div>
-            <div className="desc">
-              <h5>23</h5>
-              <p>details will be displayed here</p>
-            </div>
+            <p className="md:text-xl text-base text-gray-500 tracking-wide">
+              Introducing our latest t-shirt, the ultimate combination of style
+              and comfort. Made from soft, breathable fabric, this t-shirt is
+              perfect for everyday wear. The modern design features a classic
+              crew neckline and short sleeves for a timeless look. The color
+              options available will allow you to choose the one that suits your
+              style best. The fabric is pre-shrunk to ensure a consistent fit
+              wash after wash. Whether you're running errands, hanging out with
+              friends, or just lounging at home, this t-shirt is sure to be your
+              new go-to. Perfect for any casual occasion. Made from premium
+              quality, breathable cotton, this t-shirt is both comfortable and
+              durable. The classic fit and crew neck design make it versatile
+              and suitable for any body type. The shirt features a variety of
+              colors and designs, with a range of sizes for both men and women.
+              With its soft, lightweight feel, you'll love wearing it all day
+              long. Whether it's for a weekend hangout or a casual day at work,
+              this t-shirt is a must-have for any wardrobe. Don't miss out on
+              this great deal, get yours today!
+            </p>
           </div>
         </div>
       </motion.div>
@@ -76,7 +86,7 @@ const Shirt = () => {
       ) : (
         <div className="md:px-8 px-4">
           <div className="py-8 text-center uppercase">
-            <h1 className="text-5xl  text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
+            <h1 className="md:text-5xl text-xl  text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">
               Categories of Shirt
             </h1>
           </div>

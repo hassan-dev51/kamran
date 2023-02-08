@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { urlFor } from "../client";
 
 import Testimonials from "./Testimonials";
+import Choose from "./About";
 const Product = () => {
   const [products, setProducts] = useState([]);
 
@@ -83,7 +84,8 @@ const Product = () => {
           </motion.div>
         </motion.div>
       </div>
-      <Testimonials />
+      {/* <Testimonials /> */}
+      <Choose />
     </>
   );
 };
